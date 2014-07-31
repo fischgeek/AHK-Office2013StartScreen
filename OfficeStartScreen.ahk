@@ -1,5 +1,14 @@
-URLDownloadToFile, https://dl.dropboxusercontent.com/u/46638969/images/Office/Office2013.ico, %A_Temp%\Office2013.ico
-Menu, Tray, Icon, %A_Temp%\Office2013.ico
+if (!A_IsCompiled) {
+	IfNotExist, %A_Temp%\Office2013.ico
+	{
+		try {
+			URLDownloadToFile, https://dl.dropboxusercontent.com/u/46638969/images/Office/Office2013.ico, %A_Temp%\Office2013.ico
+		}
+	}
+	try {
+		Menu, Tray, Icon, %A_Temp%\Office2013.ico
+	}
+}
 RegRead, isDisabled, HKCU, Software\Microsoft\Office\15.0\Common\General, DisableBootToOfficeStart
 Gui, Color, White
 Gui, Font, s14, Segoe UI Light
